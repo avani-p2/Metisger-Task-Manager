@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metisger Task Management Dashboard</title>
+    <link rel="stylesheet" href="new3.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left sidebar -->
+        <div class="left-sidebar">
+            <div class="metisger-box">
+                <h2>Metisger</h2>
+                <div class="sidebar-box">
+                    <ul>
+                        <li><a href="calendar.html">Calendar</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="focuspage.html">Focus Session</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <div class="welcome-box">
+                <h1 id="welcome-message">Metisger Dashboard</h1>
+            </div>
+            <div class="task-adder-box">
+                <h2>Let's Get Working!</h2>
+                <p>Enter your tasks here:</p>
+                <input type="text" id="task-input" placeholder="Enter a new task"><br>
+                <button onclick="addTask()">Add Task</button>
+            </div>
+            <div class="clock-box">
+                <h2>Keep Track of the Time!</h2>
+                <p id="current-date"></p>
+            </div>
+            <div class="task-list">
+                <!-- Task items will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get the name from the URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+
+        // Display the welcome message
+        document.getElementById("welcome-message").textContent = `Hello, ${name}!`;
+
+        // Function to add a new task
+        function addTask() {
+            var taskInput = document.getElementById("task-input").value;
+            if (taskInput.trim() !== "") {
+                var taskList = document.querySelector(".task-list");
+                var newTask = document.createElement("div");
+                newTask.classList.add("task-item");
+                newTask.innerHTML = `
+                    <input type="checkbox" onchange="toggleTask(this)">
+                    <label>${taskInput}</label>
+                    <button onclick="editTask(this)">Edit</button>
+                    <button onclick="deleteTask(this)">Delete</button>
+                `;
+                taskList.appendChild(newTask);
+                document.getElementById("task-input").value = "";
+            }
+        }
+
+        // Function to toggle task completion status
+        function toggleTask(checkbox) {
+            var label = checkbox.nextElementSibling;
+            if (checkbox.checked) {
+                label.style.textDecoration = "line-through";
+            } else {
+                label.style.textDecoration = "none";
+            }
+        }
+
+        // Function to edit a task
+        function editTask(button) {
+            var taskItem = button.parentNode;
+            var label = taskItem.querySelector("label");
+            var newTask = prompt("Edit your task:", label.textContent);
+            if (newTask !== null && newTask.trim() !== "") {
+                label.textContent = newTask;
+            }
+        }
+
+        // Function to delete a task
+        function deleteTask(button) {
+            var taskItem = button.parentNode;
+            taskItem.remove();
+        }
+
+        // Function to display current date and time
+        function updateTime() {
+            var currentDate = new Date();
+            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+            document.getElementById("current-date").textContent = currentDate.toLocaleDateString('en-US', options);
+        }
+
+        updateTime(); // Update time immediately
+        setInterval(updateTime, 1000); // Update time every second
+    </script>
+</body>
+</html>
