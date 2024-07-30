@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aesthetic Calendar</title>
+    <link rel="stylesheet" href="calendar.css">
+</head>
+<body>
+    <style>
+        body {
+            background-image: url('https://i.pinimg.com/originals/45/55/11/455511b1b8d9937bb193fa4125bf1be5.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <div class="calendar-container">
+        <div class="calendar">
+            <div class="header">
+                <button id="prevBtn">&lt;</button>
+                <div id="monthYear"></div>
+                <button id="nextBtn">&gt;</button>
+            </div>
+            <div class="days">
+                <div class="day">Sun</div>
+                <div class="day">Mon</div>
+                <div class="day">Tue</div>
+                <div class="day">Wed</div>
+                <div class="day">Thu</div>
+                <div class="day">Fri</div>
+                <div class="day">Sat</div>
+            </div>
+            <div class="dates"></div>
+            <div class="time-container">
+                <div id="currentTime"></div>
+            </div>
+            <div class="clipart">
+                <img src="https://i.pinimg.com/564x/bf/e0/6a/bfe06abb83711a69ce17181949493c16.jpg">
+            </div>
+        </div>
+    </div>
+    <script src="calendar.js"></script>
+</body>
+</html>
