@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden; /* Prevent body scroll */
+}
+
+.calendar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 20px;
+}
+
+.calendar {
+    width: 90%;
+    max-width: 500px;
+    background-color: #958879;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    overflow: auto; /* Enable scrolling within the calendar */
+    max-height: calc(100vh - 40px); /* Ensure calendar fits within the viewport */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#monthYear {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2C2723;
+    margin-top: 10px;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #2C2723;
+}
+
+.days {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.day {
+    font-weight: bold;
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    color: #333;
+}
+
+.dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.date {
+    padding: 15px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.date:hover {
+    background-color: #f0f0f0;
+}
+
+.selected {
+    background-color: #2C2723;
+    color: #fff;
+}
+
+.clipart {
+    margin-top: 20px;
+}
+
+.clipart img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.time-container {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2C2723;
+}
